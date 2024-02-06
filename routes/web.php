@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// 課程寫法
 Route::prefix('auth')->group(function () {
     Route::post('/login', LoginController::class);
     Route::post('/logout', LogoutController::class);
