@@ -13,7 +13,7 @@ class SummaryController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $tasks = $request->user()->tasksSummary();
+        $tasks = $request->user()->tasksSummary($request->period);
 
         // 分成完成的和還沒完成的
         return $tasks->mapToGroups(function ($item, $key) {
