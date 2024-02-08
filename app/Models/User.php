@@ -48,4 +48,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
+
+    // 定義新關聯
+    public function tasksSummary()
+    {
+        // 取得目前使用者的所有目錄
+        return $this->tasks()
+                    ->where('created_at', '>=', now()->subDays(7))
+                    ->latest()
+                    ->get();
+    }
 }
